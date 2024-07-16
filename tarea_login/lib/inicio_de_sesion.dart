@@ -32,7 +32,7 @@ class InicioDeSesion extends StatelessWidget{
         child: Column(
 
           children: [
-            SizedBox(height: altura/2.5,),
+            SizedBox(height: altura/3,),
             const Text("Welcome", style: textLoguinStyle,),
             
             Expanded(child: Container(
@@ -43,22 +43,37 @@ class InicioDeSesion extends StatelessWidget{
                 )
                 ),
                 child: SingleChildScrollView(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text("Login", style: TextStyle(fontSize: 40),),
-                    SizedBox(height: 20,),
+                    children: [const Text("Login", style: TextStyle(fontSize: 40),),
+                    const SizedBox(height: 20,),
                     Wrap(
-                      runSpacing: 30,
+                      alignment: WrapAlignment.center,
+                      runSpacing: 20,
                       children: [
-                        CustomInicio(),
-                    CustomInicio(),
-                    ElevatedButton(onPressed: (){}, child: Text("data"))
+                        const CustomInicio(),
+                        const CustomInicio(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(style: ButtonStyle(fixedSize: WidgetStateProperty.all(Size(200, 0))),onPressed: (){}, child: Text("SIGN UP")),
+                          ],
+                        ),
+                        const Text("OR",),
+                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [IconButton(onPressed: (){}, icon: Icon(Icons.facebook), style: ButtonStyle(iconSize: WidgetStateProperty.all(40)),),
+                              IconButton(onPressed: (){}, icon: Icon(Icons.email),style: ButtonStyle(iconSize: WidgetStateProperty.all(40))),
+                              IconButton(onPressed: (){}, icon: Icon(Icons.access_time_filled_sharp),style: ButtonStyle(iconSize: WidgetStateProperty.all(40)))
+                            ],
+                          ),
+                        Row(children: [const Text("New here? "),
+                            TextButton(onPressed: ()=> Navigator.of(context).pushNamed('registro'), child: Text("Sign in")),
+                        ],)
                       ],
                     ),
-                    Text("OR"),
-                    Row(children: [Icon(Icons.face), Icon(Icons.one_x_mobiledata_rounded), Icon(Icons.access_alarm_sharp)],),
-                    Text("New here? ")
+                    
                   ],),
                 ),
             )

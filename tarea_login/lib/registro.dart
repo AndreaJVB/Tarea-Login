@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tarea_login/widgets/custom_forms.dart';
 
-import 'package:tarea_login/widgets/custom_form_registro.dart';
-import 'package:tarea_login/widgets/custom_registro.dart';
 
 class InputsPage extends StatelessWidget {
   InputsPage({super.key});

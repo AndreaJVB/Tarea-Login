@@ -1,14 +1,17 @@
 
 import 'package:flutter/material.dart';
-import 'package:tarea_login/widgets/custom_inicio_sesion.dart';
+import 'package:tarea_login/widgets/custom_forms.dart';
+
 
 class InicioDeSesion extends StatelessWidget{
-  const InicioDeSesion({super.key});
+  InicioDeSesion({super.key});
+  final correo = TextEditingController();
+  final password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     //Tamaños
-    final ancho = MediaQuery.of(context).size.width;
+    final ancho= MediaQuery.of(context).size.width;
     final altura = MediaQuery.of(context).size.height;
     const textLoguinStyle = TextStyle(fontSize: 50, fontFamily: "Arial", fontWeight: FontWeight.w700, color: Colors.white);
     
@@ -46,18 +49,23 @@ class InicioDeSesion extends StatelessWidget{
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [const Text("Login", style: TextStyle(fontSize: 40),),
-                    const SizedBox(height: 20,),
+                    children: [const Text("Login", style: TextStyle(fontSize: 35),),
+                    const SizedBox(height: 10,),
                     Wrap(
                       alignment: WrapAlignment.center,
-                      runSpacing: 20,
+                      runSpacing: 5,
                       children: [
-                        const CustomInicio(),
-                        const CustomInicio(),
+                        CustomFormRegistro(label: "Correo", controller: correo, keyboardType: TextInputType.emailAddress, prefixIcon: Icon(Icons.person),),
+                        CustomFormRegistro(label: "Contraseña", controller: password, keyboardType: TextInputType.visiblePassword, prefixIcon: Icon(Icons.password), obscureText: true,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            OutlinedButton(style: ButtonStyle(fixedSize: WidgetStateProperty.all(Size(200, 0))),onPressed: (){}, child: Text("SIGN UP")),
+                            OutlinedButton(style: ButtonStyle(
+                              fixedSize: WidgetStateProperty.all(Size(ancho/1.5, 0)),
+                              backgroundColor: WidgetStateProperty.all(Color.fromARGB(255, 6, 38, 66))
+                              ),
+                              onPressed: (){}, child: Text("SIGN UP", style: TextStyle(color: Colors.white),)
+                              ),
                           ],
                         ),
                         const Text("OR",),

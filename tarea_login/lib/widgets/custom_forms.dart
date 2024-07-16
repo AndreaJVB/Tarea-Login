@@ -24,6 +24,7 @@ class CustomFormRegistro extends StatelessWidget {
   final Icon? prefixIcon;
   final Icon? suffixIcon;
 
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(

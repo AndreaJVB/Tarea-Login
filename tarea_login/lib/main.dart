@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       initialRoute: 'inicio_sesion',
       routes: {
-        'inicio_sesion' : (context) => const InicioDeSesion(),
+        'inicio_sesion' : (context) => InicioDeSesion(),
         'registro': (context)=> InputsPage()
       }
 

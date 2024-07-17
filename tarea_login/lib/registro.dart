@@ -133,7 +133,7 @@ class InputsPage extends StatelessWidget {
             user?.add(datos);
           }
 
-
+          Navigator.pop(context);
           Navigator.of(context).pushNamed('inicio_sesion', arguments: user);
 
           // Mandar a guardar

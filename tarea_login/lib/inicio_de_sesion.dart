@@ -9,6 +9,7 @@ class InicioDeSesion extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+   
     //Tamaños
     
     final altura = MediaQuery.of(context).size.height;
@@ -45,7 +46,21 @@ class InicioDeSesion extends StatelessWidget{
                 borderRadius: BorderRadius.vertical(top: Radius.elliptical(50, 50)
                 )
                 ),
-                child: InicioSesionUsuarios(),
+                child: const SingleChildScrollView(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Login",
+                            style: TextStyle(fontSize: 35),
+                          ),
+                          const SizedBox(height: 10),
+                          InicioSesionUsuarios(),
+          
+        ],
+      ),
+    ),
             )
             )
           ],

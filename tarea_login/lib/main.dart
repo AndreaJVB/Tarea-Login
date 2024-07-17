@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tarea_login/inicio_de_sesion.dart';
+import 'package:tarea_login/inicio_page.dart';
 import 'package:tarea_login/registro.dart';
 
 void main(){
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       initialRoute: 'inicio_sesion',
       routes: {
-        'inicio_sesion' : (context) => InicioDeSesion(),
-        'registro': (context)=> InputsPage()
+        'inicio_sesion' : (context) => const InicioDeSesion(),
+        'registro': (context)=> InputsPage(),
+        'inicio_page': (context)=> const InicioPage(),
       }
 
     );

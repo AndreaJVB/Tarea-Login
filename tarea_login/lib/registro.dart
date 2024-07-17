@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tarea_login/widgets/custom_forms.dart';
 
-
 class InputsPage extends StatelessWidget {
   InputsPage({super.key});
 
@@ -11,14 +10,20 @@ class InputsPage extends StatelessWidget {
   final contraseniaController = TextEditingController();
   final confirmarContraseniaController = TextEditingController();
 
+  //Propiedad de los usuarios
+  final usuarios = [];
+
   // El controlador del Form
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final registrando = [];
+    List? user = ModalRoute.of(context)!.settings.arguments as List?;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registro'),
+        title: const Text('Registro'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -38,7 +43,7 @@ class InputsPage extends StatelessWidget {
                   }
                   return null;
                 },
-                prefixIcon: Icon(Icons.person),
+                prefixIcon: const Icon(Icons.person),
                 hintText: 'Ingrese su nombre completo',
               ),
               CustomFormRegistro(
@@ -85,8 +90,8 @@ class InputsPage extends StatelessWidget {
                   }
                   return null;
                 },
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: Icon(Icons.remove_red_eye),
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: const Icon(Icons.remove_red_eye),
                 hintText: 'Ingrese su contraseña',
               ),
               CustomFormRegistro(
@@ -102,8 +107,8 @@ class InputsPage extends StatelessWidget {
                   }
                   return null;
                 },
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: Icon(Icons.remove_red_eye),
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: const Icon(Icons.remove_red_eye),
                 hintText: 'Confirme su contraseña',
               ),
             ],
@@ -119,14 +124,22 @@ class InputsPage extends StatelessWidget {
             'nombre': nombreController.text,
             'correo': correoController.text,
             'telefono': telefonoController.text,
-            'contrasenia': contraseniaController.text,
+            'password': contraseniaController.text
           };
+          if (user == null){
+            registrando.add(datos);
+            user = registrando;
+          }else{
+            user?.add(datos);
+          }
 
-          print(datos);
+
+          Navigator.of(context).pushNamed('inicio_sesion', arguments: user);
 
           // Mandar a guardar
         },
       ),
     );
   }
+  
 }

@@ -10,11 +10,17 @@ class InputsPage extends StatelessWidget {
   final contraseniaController = TextEditingController();
   final confirmarContraseniaController = TextEditingController();
 
+  //Propiedad de los usuarios
+  final usuarios = [];
+
   // El controlador del Form
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final registrando = [];
+    List? user = ModalRoute.of(context)!.settings.arguments as List?;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
@@ -134,49 +140,42 @@ class InputsPage extends StatelessWidget {
                       suffixIcon: Icon(Icons.remove_red_eye),
                       hintText: 'Confirme su contraseña',
                     ),
-                    SizedBox(height: 20),
-                    // Text(
-                    //   'Already have an account? ',
-                    //   style: TextStyle(fontSize: 16),
-                    // ),
-                    // GestureDetector(
-                    //   onTap: () {
-                    //     // Add navigation to the login page
-                    //   },
-                    //   child: Text(
-                    //     'Log in here',
-                    //     style: TextStyle(
-                    //       fontSize: 16,
-                    //       fontWeight: FontWeight.bold,
-                    //       color: Colors.blue,
-                    //       decoration: TextDecoration.underline,
-                    //     ),
-                    //   ),
-                    // ),
+                   
+                    
+
                   ],
                 ),
-              ),
-            ],
-          ),
-        ),
+        
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.save),
-        onPressed: () {
-          if (!formkey.currentState!.validate()) return;
-
-          final datos = {
-            'nombre': nombreController.text,
-            'correo': correoController.text,
-            'telefono': telefonoController.text,
-            'contrasenia': contraseniaController.text,
-          };
-
-          print(datos);
-
-          // Mandar a guardar
-        },
+      
+    ]
+           )
+        )
       ),
-    );
+          floatingActionButton: FloatingActionButton(
+              child: const Icon(Icons.save),
+              onPressed: () {
+                if (!formkey.currentState!.validate()) return;
+
+                final datos = {
+                  'nombre': nombreController.text,
+                  'correo': correoController.text,
+                  'telefono': telefonoController.text,
+                  'password': contraseniaController.text
+                };
+                if (user == null){
+                  registrando.add(datos);
+                  user = registrando;
+                }else{
+                  user?.add(datos);
+                }
+
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('inicio_sesion', arguments: user);
+
+                // Mandar a guardar
+              },
+            ),);
   }
+  
 }

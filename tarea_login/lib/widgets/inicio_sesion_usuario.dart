@@ -25,13 +25,13 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
               alignment: WrapAlignment.center,
               runSpacing: 5,
               children: [
-                CustomFormRegistro(
+                CustomInputs(
                   label: "Correo",
                   controller: correo,
                   keyboardType: TextInputType.emailAddress,
                   prefixIcon: const Icon(Icons.person),
                 ),
-                CustomFormRegistro(
+                CustomInputs(
                   label: "Contraseña",
                   controller: password,
                   keyboardType: TextInputType.visiblePassword,

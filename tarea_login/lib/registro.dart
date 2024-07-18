@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:tarea_login/widgets/formulario_registro.dart';
 
 class InputsPage extends StatelessWidget {
@@ -72,6 +73,7 @@ class InputsPage extends StatelessWidget {
                   
                   Text("Already have an account? "),
                   TextButton(onPressed: (){
+                    formularioUsuarios.usuarios;
                     Navigator.of(context).pushReplacementNamed('inicio_sesion',arguments: formularioUsuarios.usuarios);
                   }, child: Text("Log in here")),
                 ],

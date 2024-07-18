@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomFormRegistro extends StatelessWidget {
-  const CustomFormRegistro({
+class CustomInputs extends StatelessWidget {
+  const CustomInputs({
     super.key,
     required this.label,
     required this.controller,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tarea_login/widgets/custom_forms.dart';
+import 'package:tarea_login/widgets/custom_text_forms.dart';
 
 class InicioSesionUsuarios extends StatefulWidget {
   const InicioSesionUsuarios({super.key});

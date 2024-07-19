@@ -61,6 +61,15 @@ class InicioPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                ExpansionTile(
+                  backgroundColor: Colors.indigo,
+                  title: Text("Informacion del perfil"),
+                  children: [
+                    Text("Nombre: "),
+                    Text("Correo: "),
+                    Text("Telefono: ")
+                  ],
+                ),
                 Card(
                   color: const Color.fromARGB(255, 100, 119, 129),
                   child: Padding(
@@ -75,14 +84,6 @@ class InicioPage extends StatelessWidget {
                         SizedBox(height: 16),
                         Text(
                           "Has ingresado exitosamente",
-                          style: TextStyle(
-                            fontSize: 35,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          "Lista dinamica",
                           style: TextStyle(
                             fontSize: 35,
                             color: Colors.white,

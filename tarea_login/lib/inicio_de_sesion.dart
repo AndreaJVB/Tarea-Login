@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tarea_login/widgets/inicio_sesion_usuario.dart';
 
 
-class InicioDeSesion extends StatelessWidget{
-  const InicioDeSesion({super.key});
+class InicioSesionPage extends StatelessWidget{
+  const InicioSesionPage({super.key});
   
 
   @override

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tarea_login/widgets/custom_submit.dart';
-import 'package:tarea_login/widgets/custom_text_forms.dart';
+import 'package:tarea_login/widgets/custom_textForms.dart';
 
-class FormularioRegistro extends StatelessWidget {
-  FormularioRegistro({
+class FormRegistro extends StatelessWidget {
+  const FormRegistro({
     super.key,
     required this.formkey,
     required this.nombreController,
@@ -11,7 +10,6 @@ class FormularioRegistro extends StatelessWidget {
     required this.telefonoController,
     required this.contraseniaController,
     required this.confirmarContraseniaController,
-    this.usuarios,
   });
 
   final GlobalKey<FormState> formkey;
@@ -20,18 +18,15 @@ class FormularioRegistro extends StatelessWidget {
   final TextEditingController telefonoController;
   final TextEditingController contraseniaController;
   final TextEditingController confirmarContraseniaController;
-  List? usuarios;
 
   @override
   Widget build(BuildContext context) {
-    final ancho = MediaQuery.of(context).size.width;
-    final registrando = [];
-
     return Form(
+      
       key: formkey,
       child: Column(
         children: [
-          CustomInputs(
+          CustomFormRegistro(
             label: 'Nombre',
             controller: nombreController,
             validator: (valor) {
@@ -46,7 +41,8 @@ class FormularioRegistro extends StatelessWidget {
             prefixIcon: Icon(Icons.person),
             hintText: 'Ingrese su nombre completo',
           ),
-          CustomInputs(
+          CustomFormRegistro(
+
             label: 'Correo',
             controller: correoController,
             validator: (valor) {
@@ -62,7 +58,7 @@ class FormularioRegistro extends StatelessWidget {
             keyboardType: TextInputType.emailAddress,
             hintText: 'Ingrese su correo electrónico',
           ),
-          CustomInputs(
+          CustomFormRegistro(
             label: 'Teléfono',
             controller: telefonoController,
             validator: (valor) {
@@ -77,7 +73,7 @@ class FormularioRegistro extends StatelessWidget {
             keyboardType: TextInputType.phone,
             hintText: 'Ingrese su número de teléfono',
           ),
-          CustomInputs(
+          CustomFormRegistro(
             label: 'Contraseña',
             controller: contraseniaController,
             obscureText: true,
@@ -85,7 +81,8 @@ class FormularioRegistro extends StatelessWidget {
               if (valor == null || valor.isEmpty) {
                 return 'La contraseña es obligatoria';
               }
-              if (!RegExp(r'^(?=.*[A-Z])(?=.*\W).{8,}$').hasMatch(valor)) {
+              if (!RegExp(r'^(?=.*[A-Z])(?=.*\W).{8,}$')
+                  .hasMatch(valor)) {
                 return 'La contraseña debe tener al menos 8 caracteres, una mayúscula y un carácter especial';
               }
               return null;
@@ -94,7 +91,7 @@ class FormularioRegistro extends StatelessWidget {
             suffixIcon: Icon(Icons.remove_red_eye),
             hintText: 'Ingrese su contraseña',
           ),
-          CustomInputs(
+          CustomFormRegistro(
             label: 'Confirmar Contraseña',
             controller: confirmarContraseniaController,
             obscureText: true,
@@ -111,16 +108,7 @@ class FormularioRegistro extends StatelessWidget {
             suffixIcon: Icon(Icons.remove_red_eye),
             hintText: 'Confirme su contraseña',
           ),
-          SubmitCustom(
-            formkey: formkey,
-            ancho: ancho,
-            registrando: registrando,
-            nombreController: nombreController,
-            correoController: correoController,
-            telefonoController: telefonoController,
-            contraseniaController: contraseniaController,
-            usuarios: usuarios,
-          ),
+         
         ],
       ),
     );

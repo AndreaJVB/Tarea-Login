@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       initialRoute: 'inicio_sesion',
       routes: {
-        'inicio_sesion' : (context) => const InicioDeSesion(),
-        'registro': (context)=> InputsPage(),
+        'inicio_sesion' : (context) => const InicioSesionPage(),
+        'registro': (context)=> RegistroPage(),
         'inicio_page': (context)=> const InicioPage(),
       }
-
+      
     );
   }
 

@@ -28,12 +28,18 @@ class CustomFormRegistro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
       controller: controller,
       validator: validator,
       keyboardType: keyboardType,
       obscureText: obscureText,
       maxLength: maxLength,
       decoration: InputDecoration(
+        labelStyle: TextStyle(fontWeight: FontWeight.w600),
+        hintStyle: TextStyle(fontWeight: FontWeight.w600),
+        counterStyle: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
+        fillColor: Colors.white,
+        filled: true,
         hintText: hintText ?? 'Ingrese su $label',
         label: Text(label),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),

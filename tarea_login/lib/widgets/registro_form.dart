@@ -22,7 +22,6 @@ class FormRegistro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      
       key: formkey,
       child: Column(
         children: [
@@ -42,7 +41,6 @@ class FormRegistro extends StatelessWidget {
             hintText: 'Ingrese su nombre completo',
           ),
           CustomInputs(
-
             label: 'Correo',
             controller: correoController,
             validator: (valor) {
@@ -81,8 +79,7 @@ class FormRegistro extends StatelessWidget {
               if (valor == null || valor.isEmpty) {
                 return 'La contraseña es obligatoria';
               }
-              if (!RegExp(r'^(?=.*[A-Z])(?=.*\W).{8,}$')
-                  .hasMatch(valor)) {
+              if (!RegExp(r'^(?=.*[A-Z])(?=.*\W).{8,}$').hasMatch(valor)) {
                 return 'La contraseña debe tener al menos 8 caracteres, una mayúscula y un carácter especial';
               }
               return null;
@@ -108,7 +105,6 @@ class FormRegistro extends StatelessWidget {
             suffixIcon: Icon(Icons.remove_red_eye),
             hintText: 'Confirme su contraseña',
           ),
-         
         ],
       ),
     );

@@ -18,14 +18,13 @@ class RegistroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     ///TextoSTyle
     TextStyle textStyle = TextStyle(fontSize: 15, color: Colors.white);
+
     ///
     final ancho = MediaQuery.of(context).size.width;
     List? user = ModalRoute.of(context)!.settings.arguments as List?;
     return Scaffold(
-     
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 156, 173, 182),
         title: Center(
@@ -39,92 +38,120 @@ class RegistroPage extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Color.fromARGB(255, 30, 30, 92), // Set the background color here
-        padding: const EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text(
-                'New Account',
-                style: TextStyle(
+          color:
+              Color.fromARGB(255, 30, 30, 92), // Set the background color here
+          padding: const EdgeInsets.all(16),
+          child: SingleChildScrollView(
+              child: Column(children: [
+            Text(
+              'New Account',
+              style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: textStyle.color
-                ),
+                  color: textStyle.color),
+            ),
+            SizedBox(height: 20),
+            CircleAvatar(
+              radius: 35,
+              backgroundColor: Color.fromARGB(255, 240, 91, 5),
+              child: Image.asset(
+                'assets/images/register.png',
+                width: 100,
+                height: 100,
               ),
-              SizedBox(height: 20),
-              CircleAvatar(
-                radius: 35,
-                backgroundColor: Color.fromARGB(255, 240, 91, 5),
-                child: Image.asset(
-                  'assets/images/register.png',
-                  width: 100,
-                  height: 100,
-                ),
-              ), 
-              SizedBox(height: 20),
-              FormRegistro(formkey: formkey, nombreController: nombreController, correoController: correoController,
-               telefonoController: telefonoController, contraseniaController: contraseniaController, 
-               confirmarContraseniaController: confirmarContraseniaController),
-
-                OutlinedButton(
-                style: ButtonStyle(
-                  elevation: WidgetStateProperty.all(20),
-                  fixedSize: WidgetStateProperty.all(Size(ancho*0.4, 30)),
-                   backgroundColor: WidgetStateProperty.all(Color.fromARGB(255, 248, 129, 17)),
-                ),
-              child: Text("Sign up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
+            ),
+            SizedBox(height: 20),
+            FormRegistro(
+                formkey: formkey,
+                nombreController: nombreController,
+                correoController: correoController,
+                telefonoController: telefonoController,
+                contraseniaController: contraseniaController,
+                confirmarContraseniaController: confirmarContraseniaController),
+            OutlinedButton(
+              style: ButtonStyle(
+                elevation: WidgetStateProperty.all(20),
+                fixedSize: WidgetStateProperty.all(Size(ancho * 0.4, 30)),
+                backgroundColor:
+                    WidgetStateProperty.all(Color.fromARGB(255, 248, 129, 17)),
+              ),
+              child: Text(
+                "Sign up",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
               onPressed: () {
                 print(user);
                 if (!formkey.currentState!.validate()) return;
-                  showDialog(context: context, builder: (context){
+                showDialog(
+                    context: context,
+                    builder: (context) {
                       return AlertDialog(
                         title: Text("Seguro que quiere guardar la cuenta?"),
                         actions: [
-                          TextButton(onPressed: (){
+                          TextButton(
+                              onPressed: () {
                                 final datos = {
-                                        'nombre': nombreController.text,
-                                        'correo': correoController.text,
-                                        'telefono': telefonoController.text,
-                                        'password': contraseniaController.text
-                                      };
-                                      if (user == null){
-                                        user = [];
-                                        user?.add(datos);
-                                      
-                                      }else{
-                                        user?.add(datos);
-                                      }
-                                    
-                                      Navigator.of(context).pop();
-                                      Navigator.pushNamed(context, 'registro', arguments: user);
-                                         
-                          }, child: Text("Aceptar")),
-                          TextButton(onPressed: (){
-                              Navigator.pop(context);
-                          }, child: Text("Cancelar"))
+                                  'nombre': nombreController.text,
+                                  'correo': correoController.text,
+                                  'telefono': telefonoController.text,
+                                  'password': contraseniaController.text
+                                };
+                                if (user == null) {
+                                  user = [];
+                                  user?.add(datos);
+                                } else {
+                                  user?.add(datos);
+                                }
+
+                                Navigator.of(context).pop();
+                                Navigator.pushNamed(context, 'registro',
+                                    arguments: user);
+                              },
+                              child: Text("Aceptar")),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("Cancelar"))
                         ],
                       );
-                  });
+                    });
               },
             ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Already Have an Account?", style: TextStyle(fontSize: textStyle.fontSize,color: textStyle.color),),
-                  Expanded(
-                    child: TextButton(onPressed: (){
-                      print(user);
-                      
-                      Navigator.of(context).pushReplacementNamed('inicio_sesion', arguments: user );
-                    }, child: Text("Log in here", style: TextStyle(color: Color.fromARGB(255, 248, 129, 17), fontSize: textStyle.fontSize, fontStyle: FontStyle.italic),)),
-                  )
-                ],
-              )
-          ])
-        )
-      ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Already Have an Account?",
+                  style: TextStyle(
+                      fontSize: textStyle.fontSize, color: textStyle.color),
+                ),
+                Expanded(
+                  child: TextButton(
+                      onPressed: () {
+                        print(user);
+
+                        Navigator.of(context).pushReplacementNamed(
+                            'inicio_sesion',
+                            arguments: user);
+                      },
+                      child: Text(
+                        "Log in here",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 248, 129, 17),
+                            fontSize: textStyle.fontSize,
+                            fontStyle: FontStyle.italic),
+                      )),
+                )
+              ],
+            )
+          ]))),
     );
   }
 }

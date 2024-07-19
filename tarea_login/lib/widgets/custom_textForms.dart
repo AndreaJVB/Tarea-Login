@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class CustomInputs extends StatelessWidget {
   const CustomInputs({
     super.key,
@@ -24,7 +23,6 @@ class CustomInputs extends StatelessWidget {
   final String? hintText;
   final Icon? prefixIcon;
   final Icon? suffixIcon;
-
 
   @override
   Widget build(BuildContext context) {

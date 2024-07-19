@@ -21,93 +21,93 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
     final ancho = MediaQuery.of(context).size.width;
 
     return Form(
-            key: formkey,
-            child: Wrap(
-              
-              alignment: WrapAlignment.center,
-              runSpacing: 5,
-              children: [
-                CustomInputs(
-                  label: "Correo",
-                  controller: correo,
-                  keyboardType: TextInputType.emailAddress,
-                  prefixIcon: const Icon(Icons.person),
+      key: formkey,
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        runSpacing: 5,
+        children: [
+          CustomInputs(
+            label: "Correo",
+            controller: correo,
+            keyboardType: TextInputType.emailAddress,
+            prefixIcon: const Icon(Icons.person),
+          ),
+          CustomInputs(
+            label: "Contraseña",
+            controller: password,
+            keyboardType: TextInputType.visiblePassword,
+            prefixIcon: const Icon(Icons.password),
+            obscureText: true,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              OutlinedButton(
+                style: ButtonStyle(
+                  fixedSize: WidgetStateProperty.all(Size(ancho / 1.5, 0)),
+                  backgroundColor: WidgetStateProperty.all(
+                      const Color.fromARGB(255, 6, 38, 66)),
                 ),
-                CustomInputs(
-                  label: "Contraseña",
-                  controller: password,
-                  keyboardType: TextInputType.visiblePassword,
-                  prefixIcon: const Icon(Icons.password),
-                  obscureText: true,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    OutlinedButton(
-                      style: ButtonStyle(
-                        fixedSize: WidgetStateProperty.all(Size(ancho / 1.5, 0)),
-                        backgroundColor: WidgetStateProperty.all(const Color.fromARGB(255, 6, 38, 66)),
-                      ),
-                      onPressed: () {
-                        if (usuarios != null) {
-                          for (var user in usuarios) {
-                            if (user['correo'] == correo.text && user['password'] == password.text) {
-                              Navigator.pop(context);
-                              
-                              Navigator.popAndPushNamed(context, 'inicio_page');
-                            } else {
-                              print(user);
-                              print("Contraseña incorrecta");
-                            }
-                          }
-                        } else {
-                          print(usuarios);
-                        }
-                      },
-                      child: const Text(
-                        "SIGN UP",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const Text("OR"),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.facebook),
-                      iconSize: 40,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.email),
-                      iconSize: 40,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.access_time_filled_sharp),
-                      iconSize: 40,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Text("New here? "),
-                    TextButton(
-                      onPressed: () {
+                onPressed: () {
+                  if (usuarios != null) {
+                    for (var user in usuarios) {
+                      if (user['correo'] == correo.text &&
+                          user['password'] == password.text) {
                         Navigator.pop(context);
-                        Navigator.of(context).pushNamed('registro', arguments: usuarios);
-                      },
-                      child: const Text("Sign in"),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
 
+                        Navigator.popAndPushNamed(context, 'inicio_page');
+                      } else {
+                        print(user);
+                        print("Contraseña incorrecta");
+                      }
+                    }
+                  } else {
+                    print(usuarios);
+                  }
+                },
+                child: const Text(
+                  "SIGN UP",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+          const Text("OR"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.facebook),
+                iconSize: 40,
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.email),
+                iconSize: 40,
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.access_time_filled_sharp),
+                iconSize: 40,
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              const Text("New here? "),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.of(context)
+                      .pushNamed('registro', arguments: usuarios);
+                },
+                child: const Text("Sign in"),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
-

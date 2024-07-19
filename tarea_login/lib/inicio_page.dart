@@ -80,6 +80,14 @@ class InicioPage extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
+                        SizedBox(height: 16),
+                        Text(
+                          "Lista dinamica",
+                          style: TextStyle(
+                            fontSize: 35,
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
                   ),

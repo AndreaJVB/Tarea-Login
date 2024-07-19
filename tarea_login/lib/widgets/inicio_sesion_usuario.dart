@@ -23,16 +23,17 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
     return Form(
             key: formkey,
             child: Wrap(
+              
               alignment: WrapAlignment.center,
               runSpacing: 5,
               children: [
-                CustomFormRegistro(
+                CustomInputs(
                   label: "Correo",
                   controller: correo,
                   keyboardType: TextInputType.emailAddress,
                   prefixIcon: const Icon(Icons.person),
                 ),
-                CustomFormRegistro(
+                CustomInputs(
                   label: "Contraseña",
                   controller: password,
                   keyboardType: TextInputType.visiblePassword,
@@ -52,7 +53,8 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
                           for (var user in usuarios) {
                             if (user['correo'] == correo.text && user['password'] == password.text) {
                               Navigator.pop(context);
-                              Navigator.pushNamed(context, 'inicio_page');
+                              
+                              Navigator.popAndPushNamed(context, 'inicio_page');
                             } else {
                               print(user);
                               print("Contraseña incorrecta");

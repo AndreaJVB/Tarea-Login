@@ -26,7 +26,7 @@ class FormRegistro extends StatelessWidget {
       key: formkey,
       child: Column(
         children: [
-          CustomFormRegistro(
+          CustomInputs(
             label: 'Nombre',
             controller: nombreController,
             validator: (valor) {
@@ -41,7 +41,7 @@ class FormRegistro extends StatelessWidget {
             prefixIcon: Icon(Icons.person),
             hintText: 'Ingrese su nombre completo',
           ),
-          CustomFormRegistro(
+          CustomInputs(
 
             label: 'Correo',
             controller: correoController,
@@ -58,7 +58,7 @@ class FormRegistro extends StatelessWidget {
             keyboardType: TextInputType.emailAddress,
             hintText: 'Ingrese su correo electrónico',
           ),
-          CustomFormRegistro(
+          CustomInputs(
             label: 'Teléfono',
             controller: telefonoController,
             validator: (valor) {
@@ -73,7 +73,7 @@ class FormRegistro extends StatelessWidget {
             keyboardType: TextInputType.phone,
             hintText: 'Ingrese su número de teléfono',
           ),
-          CustomFormRegistro(
+          CustomInputs(
             label: 'Contraseña',
             controller: contraseniaController,
             obscureText: true,
@@ -91,7 +91,7 @@ class FormRegistro extends StatelessWidget {
             suffixIcon: Icon(Icons.remove_red_eye),
             hintText: 'Ingrese su contraseña',
           ),
-          CustomFormRegistro(
+          CustomInputs(
             label: 'Confirmar Contraseña',
             controller: confirmarContraseniaController,
             obscureText: true,

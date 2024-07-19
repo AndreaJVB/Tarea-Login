@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-class CustomFormRegistro extends StatelessWidget {
-  const CustomFormRegistro({
+class CustomInputs extends StatelessWidget {
+  const CustomInputs({
     super.key,
     required this.label,
     required this.controller,
@@ -20,7 +20,7 @@ class CustomFormRegistro extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool obscureText;
   final TextInputType keyboardType;
-  final int maxLength;
+  final int? maxLength;
   final String? hintText;
   final Icon? prefixIcon;
   final Icon? suffixIcon;
@@ -29,7 +29,6 @@ class CustomFormRegistro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
       controller: controller,
       validator: validator,
       keyboardType: keyboardType,

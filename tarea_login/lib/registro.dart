@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:tarea_login/widgets/registro_form.dart';
 
 class RegistroPage extends StatelessWidget {
@@ -24,15 +23,7 @@ class RegistroPage extends StatelessWidget {
     TextStyle textStyle = TextStyle(fontSize: 15, color: Colors.white);
     ///
     final ancho = MediaQuery.of(context).size.width;
-   
     List? user = ModalRoute.of(context)!.settings.arguments as List?;
-
-      final FormRegistro formularioUsuarios = FormRegistro(formkey: formkey, nombreController: nombreController, 
-                    correoController: correoController, telefonoController: telefonoController, 
-                    contraseniaController: contraseniaController, 
-                    confirmarContraseniaController: confirmarContraseniaController,);
-
-      final alto = MediaQuery.of(context).size.height;
     return Scaffold(
      
       appBar: AppBar(
@@ -51,7 +42,6 @@ class RegistroPage extends StatelessWidget {
         color: Color.fromARGB(255, 30, 30, 92), // Set the background color here
         padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
-          // Add SingleChildScrollView to handle overflow
           child: Column(
             children: [
               Text(
@@ -85,23 +75,37 @@ class RegistroPage extends StatelessWidget {
                 ),
               child: Text("Sign up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
               onPressed: () {
+                print(user);
                 if (!formkey.currentState!.validate()) return;
-
-                final datos = {
-                  'nombre': nombreController.text,
-                  'correo': correoController.text,
-                  'telefono': telefonoController.text,
-                  'password': contraseniaController.text
-                };
-                if (user == null){
-                  user = [];
-                  user?.add(datos);
-                
-                }else{
-                  user?.add(datos);
-                }
-                  
-                  print(user);
+                  showDialog(context: context, builder: (context){
+                      return AlertDialog(
+                        title: Text("Seguro que quiere guardar la cuenta?"),
+                        actions: [
+                          TextButton(onPressed: (){
+                                final datos = {
+                                        'nombre': nombreController.text,
+                                        'correo': correoController.text,
+                                        'telefono': telefonoController.text,
+                                        'password': contraseniaController.text
+                                      };
+                                      if (user == null){
+                                        user = [];
+                                        user?.add(datos);
+                                      
+                                      }else{
+                                        user?.add(datos);
+                                      }
+                                    
+                                      Navigator.of(context).pop();
+                                      Navigator.pushNamed(context, 'registro', arguments: user);
+                                         
+                          }, child: Text("Aceptar")),
+                          TextButton(onPressed: (){
+                              Navigator.pop(context);
+                          }, child: Text("Cancelar"))
+                        ],
+                      );
+                  });
               },
             ),
               SizedBox(height: 20,),
@@ -112,6 +116,7 @@ class RegistroPage extends StatelessWidget {
                   Expanded(
                     child: TextButton(onPressed: (){
                       print(user);
+                      
                       Navigator.of(context).pushReplacementNamed('inicio_sesion', arguments: user );
                     }, child: Text("Log in here", style: TextStyle(color: Color.fromARGB(255, 248, 129, 17), fontSize: textStyle.fontSize, fontStyle: FontStyle.italic),)),
                   )
@@ -120,9 +125,6 @@ class RegistroPage extends StatelessWidget {
           ])
         )
       ),
-        
     );
   }
-
-  
 }

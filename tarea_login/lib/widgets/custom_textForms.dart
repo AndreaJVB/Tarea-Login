@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tarea_login/widgets/custom_text_forms.dart';
+
 
 class CustomFormRegistro extends StatelessWidget {
   const CustomFormRegistro({

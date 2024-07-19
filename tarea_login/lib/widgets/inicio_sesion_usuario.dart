@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tarea_login/widgets/custom_text_forms.dart';
+
 import 'package:tarea_login/widgets/custom_textForms.dart';
 
 class InicioSesionUsuarios extends StatefulWidget {
@@ -26,13 +26,13 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
               alignment: WrapAlignment.center,
               runSpacing: 5,
               children: [
-                CustomInputs(
+                CustomFormRegistro(
                   label: "Correo",
                   controller: correo,
                   keyboardType: TextInputType.emailAddress,
                   prefixIcon: const Icon(Icons.person),
                 ),
-                CustomInputs(
+                CustomFormRegistro(
                   label: "Contraseña",
                   controller: password,
                   keyboardType: TextInputType.visiblePassword,

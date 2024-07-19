@@ -112,7 +112,7 @@ class RegistroPage extends StatelessWidget {
                   Expanded(
                     child: TextButton(onPressed: (){
                       print(user);
-                      Navigator.of(context).pushReplacementNamed('inicio_sesion', );
+                      Navigator.of(context).pushReplacementNamed('inicio_sesion', arguments: user );
                     }, child: Text("Log in here", style: TextStyle(color: Color.fromARGB(255, 248, 129, 17), fontSize: textStyle.fontSize, fontStyle: FontStyle.italic),)),
                   )
                 ],

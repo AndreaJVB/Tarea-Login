@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:tarea_login/widgets/custom_textForms.dart';
+import 'package:tarea_login/widgets/pasando_usuario.dart';
 
 class InicioSesionUsuarios extends StatefulWidget {
   const InicioSesionUsuarios({super.key});
@@ -49,19 +50,31 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
                         backgroundColor: WidgetStateProperty.all(const Color.fromARGB(255, 6, 38, 66)),
                       ),
                       onPressed: () {
+                        print(usuarios);
                         if (usuarios != null) {
                           for (var user in usuarios) {
                             if (user['correo'] == correo.text && user['password'] == password.text) {
-                              Navigator.pop(context);
-                              
-                              Navigator.popAndPushNamed(context, 'inicio_page');
+                              // Navigator.pop(context);
+                              final argumentoUsers = TransferenciaUsuario(Cuenta: user, listaUsers: usuarios);
+                              // Navigator.popAndPushNamed(context, 'inicio_page');
+                              Navigator.of(context).pushNamedAndRemoveUntil('inicio_page', (Route<dynamic> route) => false,arguments: argumentoUsers);
+                              break;
                             } else {
-                              print(user);
-                              print("Contraseña incorrecta");
+                              showDialog(context: context, builder: (context){
+                            return AlertDialog(
+                              elevation: 50,
+                              title: Text("ERROR"),
+                              icon: Icon(Icons.close_outlined, size: 50,),
+                              iconColor: Color.fromARGB(255, 161, 5, 5),
+                              content: Text("Usuario o contraseña incorrecta"),
+                                
+                            );
+                          }).then((_){
+                            Navigator.of(context).pushReplacementNamed('inicio_sesion', arguments: usuarios);
+                          });
+                          
                             }
                           }
-                        } else {
-                          print(usuarios);
                         }
                       },
                       child: const Text(

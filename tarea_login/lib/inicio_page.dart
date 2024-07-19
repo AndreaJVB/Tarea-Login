@@ -1,13 +1,18 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:tarea_login/widgets/pasando_usuario.dart';
 
 class InicioPage extends StatelessWidget {
   const InicioPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cierreSesion= ModalRoute.of(context)!.settings.arguments as TransferenciaUsuario;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.pop(context);
+        Navigator.of(context).pushNamed('inicio_sesion', arguments: cierreSesion.listaUsers);
+      }, child: Text("Cerrar Sesion"),),
       //Header
       appBar: AppBar(
         toolbarHeight: 70,

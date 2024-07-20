@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:tarea_login/widgets/custom_textForms.dart';
 import 'package:tarea_login/widgets/pasando_usuario.dart';
 
@@ -54,9 +53,7 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
                         if (usuarios != null) {
                           for (var user in usuarios) {
                             if (user['correo'] == correo.text && user['password'] == password.text) {
-                              // Navigator.pop(context);
                               final argumentoUsers = TransferenciaUsuario(Cuenta: user, listaUsers: usuarios);
-                              // Navigator.popAndPushNamed(context, 'inicio_page');
                               Navigator.of(context).pushNamedAndRemoveUntil('inicio_page', (Route<dynamic> route) => false,arguments: argumentoUsers);
                               break;
                             } else {
@@ -72,7 +69,6 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
                           }).then((_){
                             Navigator.of(context).pushReplacementNamed('inicio_sesion', arguments: usuarios);
                           });
-                          
                             }
                           }
                         }
@@ -120,6 +116,5 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
               ],
             ),
           );
-
   }
 }

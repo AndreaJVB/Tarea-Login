@@ -8,6 +8,7 @@ class InicioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cierreSesion= ModalRoute.of(context)!.settings.arguments as TransferenciaUsuario;
+    final altura = MediaQuery.of(context).size.height;
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: (){
         Navigator.pop(context);
@@ -15,27 +16,24 @@ class InicioPage extends StatelessWidget {
       }, child: Text("Cerrar Sesion"),),
       //Header
       appBar: AppBar(
-        toolbarHeight: 70,
+        
+        toolbarHeight: altura * 0.12,
         title: Row(
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width / 2,
-              child: const Column(
+             
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Bienvenido, Usuario",
+                    "Bienvenido,",
                     style: TextStyle(fontSize: 30),
                   ),
-                  //FittedBox(
-                  //child: Text(
-                  //"Usuario",
-                  //style: TextStyle(fontSize: 30),
-                  //),
-                  //),
+                  FittedBox(child: Text("${cierreSesion.Cuenta['nombre']}")),
                   FittedBox(
                     child: Text(
-                      "ANDRasqsz@gmail.com",
+                      "${cierreSesion.Cuenta['correo']}",
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
@@ -54,6 +52,7 @@ class InicioPage extends StatelessWidget {
             ),
           ],
         ),
+
       ),
 
       //Body
@@ -70,9 +69,9 @@ class InicioPage extends StatelessWidget {
                   backgroundColor: Colors.indigo,
                   title: Text("Informacion del perfil"),
                   children: [
-                    Text("Nombre: "),
-                    Text("Correo: "),
-                    Text("Telefono: ")
+                    Text("Nombre: ${cierreSesion.Cuenta['nombre']}"),
+                    Text("Correo: ${cierreSesion.Cuenta['correo']}"),
+                    Text("Telefono: ${cierreSesion.Cuenta['telefono']}")
                   ],
                 ),
                 Card(

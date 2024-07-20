@@ -23,7 +23,8 @@ class FormRegistro extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: formkey,
-      child: Column(
+      child: Wrap(
+        runSpacing: 20,
         children: [
           CustomInputs(
             label: 'Nombre',
@@ -41,6 +42,7 @@ class FormRegistro extends StatelessWidget {
             hintText: 'Ingrese su nombre completo',
           ),
           CustomInputs(
+            prefixIcon: Icon(Icons.email),
             label: 'Correo',
             controller: correoController,
             validator: (valor) {
@@ -57,6 +59,7 @@ class FormRegistro extends StatelessWidget {
             hintText: 'Ingrese su correo electrónico',
           ),
           CustomInputs(
+            prefixIcon: Icon(Icons.phone),
             label: 'Teléfono',
             controller: telefonoController,
             validator: (valor) {

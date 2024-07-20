@@ -32,10 +32,10 @@ class InicioSesionPage extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: altura / 3,
+                height: altura*0.35,
               ),
               const Text(
-                "Welcome",
+                "Bienvenido",
                 style: textLoguinStyle,
               ),
               Expanded(
@@ -51,7 +51,7 @@ class InicioSesionPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Login",
+                        "Inicio de sesion",
                         style: TextStyle(fontSize: 35),
                       ),
                       const SizedBox(height: 10),

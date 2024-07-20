@@ -23,6 +23,7 @@ class RegistroPage extends StatelessWidget {
 
     ///
     final ancho = MediaQuery.of(context).size.width;
+    final alto = MediaQuery.of(context).size.height;
     List? user = ModalRoute.of(context)!.settings.arguments as List?;
     return Scaffold(
       appBar: AppBar(
@@ -38,13 +39,14 @@ class RegistroPage extends StatelessWidget {
         ),
       ),
       body: Container(
+        height: alto,
           color:
               Color.fromARGB(255, 30, 30, 92), // Set the background color here
           padding: const EdgeInsets.all(16),
           child: SingleChildScrollView(
               child: Column(children: [
             Text(
-              'New Account',
+              'Nueva Cuenta',
               style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -68,19 +70,22 @@ class RegistroPage extends StatelessWidget {
                 telefonoController: telefonoController,
                 contraseniaController: contraseniaController,
                 confirmarContraseniaController: confirmarContraseniaController),
+                SizedBox(height: 20,),
             OutlinedButton(
               style: ButtonStyle(
                 elevation: WidgetStateProperty.all(20),
-                fixedSize: WidgetStateProperty.all(Size(ancho * 0.4, 30)),
+                fixedSize: WidgetStateProperty.all(Size(ancho * 0.45, 30)),
                 backgroundColor:
                     WidgetStateProperty.all(Color.fromARGB(255, 248, 129, 17)),
               ),
+              
               child: Text(
-                "Sign up",
+                "Registrarse",
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 20),
+                    textAlign: TextAlign.center,
               ),
               onPressed: () {
                 print(user);
@@ -128,7 +133,7 @@ class RegistroPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Already Have an Account?",
+                  "Ya tienes una cuenta?",
                   style: TextStyle(
                       fontSize: textStyle.fontSize, color: textStyle.color),
                 ),
@@ -142,7 +147,7 @@ class RegistroPage extends StatelessWidget {
                             arguments: user);
                       },
                       child: Text(
-                        "Log in here",
+                        "Iniciar sesion",
                         style: TextStyle(
                             color: Color.fromARGB(255, 248, 129, 17),
                             fontSize: textStyle.fontSize,

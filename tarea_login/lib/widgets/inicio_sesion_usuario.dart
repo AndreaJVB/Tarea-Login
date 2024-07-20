@@ -25,7 +25,7 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
             child: Wrap(
               
               alignment: WrapAlignment.center,
-              runSpacing: 5,
+              runSpacing: 14,
               children: [
                 CustomInputs(
                   label: "Correo",
@@ -74,7 +74,7 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
                         }
                       },
                       child: const Text(
-                        "SIGN UP",
+                        "ACCEDER",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -103,13 +103,13 @@ class _InicioSesionUsuariosState extends State<InicioSesionUsuarios> {
                 ),
                 Row(
                   children: [
-                    const Text("New here? "),
+                    const Text("Nuevo aqui? "),
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
                         Navigator.of(context).pushNamed('registro', arguments: usuarios);
                       },
-                      child: const Text("Sign in"),
+                      child: const Text("Registrarse"),
                     ),
                   ],
                 ),

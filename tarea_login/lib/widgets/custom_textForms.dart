@@ -8,7 +8,7 @@ class CustomInputs extends StatelessWidget {
     this.validator,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
-    this.maxLength = 20,
+    this.maxLength,
     this.hintText,
     this.prefixIcon,
     this.suffixIcon,

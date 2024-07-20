@@ -7,14 +7,21 @@ class InicioPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textoStyle = TextStyle(color: Colors.white, fontSize: 15);
     final cierreSesion= ModalRoute.of(context)!.settings.arguments as TransferenciaUsuario;
     final altura = MediaQuery.of(context).size.height;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        Navigator.pop(context);
-        Navigator.of(context).pushNamed('inicio_sesion', arguments: cierreSesion.listaUsers);
-      }, child: Text("Cerrar Sesion"),),
+      floatingActionButton: Container(
+       
+        child: FloatingActionButton(onPressed: (){
+          Navigator.pop(context);
+          Navigator.of(context).pushNamed('inicio_sesion', arguments: cierreSesion.listaUsers);
+        }, child:Icon(Icons.logout)
+            
+         ),
+      ),
       //Header
+      
       appBar: AppBar(
         
         toolbarHeight: altura * 0.12,
@@ -59,21 +66,29 @@ class InicioPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
+        
+          alignment: Alignment.center,
+          height: altura,
           padding: const EdgeInsets.all(20),
           color: const Color.fromARGB(255, 88, 111, 122),
-          child: Center(
+          child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ExpansionTile(
-                  backgroundColor: Colors.indigo,
-                  title: Text("Informacion del perfil"),
-                  children: [
-                    Text("Nombre: ${cierreSesion.Cuenta['nombre']}"),
-                    Text("Correo: ${cierreSesion.Cuenta['correo']}"),
-                    Text("Telefono: ${cierreSesion.Cuenta['telefono']}")
-                  ],
+                Card(
+                  child: ExpansionTile(
+                    textColor: textoStyle.color,
+                    backgroundColor: Colors.indigo,
+                    title: Text("Informacion del perfil",),
+                    
+                    children: [
+                      Text("Nombre: ${cierreSesion.Cuenta['nombre']}", style: textoStyle,),
+                      Text("Correo: ${cierreSesion.Cuenta['correo']}", style: textoStyle,),
+                      Text("Telefono: ${cierreSesion.Cuenta['telefono']}", style: textoStyle,)
+                    ],
+                  ),
                 ),
+                SizedBox(height: 20,),
                 Card(
                   color: const Color.fromARGB(255, 100, 119, 129),
                   child: Padding(
@@ -90,7 +105,7 @@ class InicioPage extends StatelessWidget {
                           "Has ingresado exitosamente",
                           style: TextStyle(
                             fontSize: 35,
-                            color: Colors.white,
+                            color: textoStyle.color,
                           ),
                         ),
                       ],
